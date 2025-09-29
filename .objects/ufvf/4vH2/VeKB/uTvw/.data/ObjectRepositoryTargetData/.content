@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="kuHudaSruk25UgLIuc_A-A" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" CVScreenId="a58054f0-df13-40d1-a2b2-ebe14b773627" CvElementArea="415, 315, 282, 35" CvTextArea="540, 326, 32, 13" CvTextArgument="Chat" CvType="Button" DesignTimeRectangle="416, 317, 280, 32" ElementType="Button" FullSelectorArgument="&lt;uia cls='Button' name='Chat' /&gt;" Guid="a707ca26-4153-442a-b5eb-795b155fba77" ScopeSelectorArgument="&lt;wnd app='applicationframehost.exe' appid='5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App' title='WhatsApp' /&gt;" SearchSteps="Selector, CV" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="a58054f0-df13-40d1-a2b2-ebe14b773627" CvTextArea="456, 129, 136, 18" CvTextArgument="Phone number" CvType="Text" DesignTimeRectangle="456, 127, 248, 28" ElementType="Text" FuzzySelectorArgument="&lt;uia cls='TextBlock' name='Phone number' role='text' automationid='' matching:name='fuzzy' fuzzylevel:name='0.0' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:fulltext='Phone number' /&gt;" Guid="5b6e7bab-5d63-4d28-8ecd-385573fe3cfb" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="cbc217abb076c59dfdc0cde7650d6633.png" xmlns="">0bgXwH8Y_WkiIg9eEi5679g</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

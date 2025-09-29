@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome WhatsApp automation from CSV - Google Chrome",
+  "Type": "App",
+  "Id": "JvkxwRLkiE2XAYtROWoW7Q",
+  "Reference": "qb6Lche_vEKVYTUvohoRhA/JvkxwRLkiE2XAYtROWoW7Q",
+  "Created": "2025-09-24T11:36:14.1746535Z",
+  "Updated": "2025-09-24T11:36:14.1746535Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.13.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="fySeHtpyBUqkaSX6EEGzZw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" CVScreenId="f74ef8c5-3a88-4783-83b5-d6b4da029cec" CvElementArea="416, 166, 280, 32" CvType="InputBox" DesignTimeRectangle="670, 171, 22, 22" ElementType="Button" FullSelectorArgument="&lt;uia cls='ToggleButton' name='Phone number' /&gt;" Guid="7f6b0462-1821-405f-8a10-aa402b4a4d5c" ScopeSelectorArgument="&lt;wnd app='applicationframehost.exe' appid='5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App' title='WhatsApp' /&gt;" SearchSteps="Selector, CV" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="f74ef8c5-3a88-4783-83b5-d6b4da029cec" CvElementArea="416, 166, 280, 32" CvType="InputBox" DesignTimeRectangle="416, 167, 280, 30" ElementType="InputBox" FullSelectorArgument="&lt;uia automationid='QueryTextBox' cls='TextBox' name='Search name or number' /&gt;" Guid="443d0a33-4c87-4524-ab43-48165f77966a" SearchSteps="Selector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="fdf667f01e13b77e3c45def27fac34ef.png" xmlns="">0z4Zm0rJdi0W3GIqtDw3A9w</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

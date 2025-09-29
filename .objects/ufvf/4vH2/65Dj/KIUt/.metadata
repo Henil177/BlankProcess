@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Chat",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "KIUtYCihu0y5kCDYsqG4WQ",
+  "Reference": "qb6Lche_vEKVYTUvohoRhA/KIUtYCihu0y5kCDYsqG4WQ",
+  "ParentRef": "qb6Lche_vEKVYTUvohoRhA/65Djqt1HAkaSsgqp42uicA",
+  "Created": "2025-09-24T12:26:21.6493779Z",
+  "Updated": "2025-09-24T12:26:21.6493779Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.13.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="uUAyaL5Gwk64RfKbfMdJ-Q" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" CVScreenId="e7481874-e42b-40b3-87bd-3267c4d4f9b3" CvTextArea="592, 1005, 107, 21" CvTextArgument="[ype a message" CvType="Text" DesignTimeRectangle="582, 995, 1294, 40" ElementType="InputBox" FullSelectorArgument="&lt;uia automationid='InputBarTextBox' cls='RichEditBox' name='Type to +91 93809 93995' /&gt;" Guid="f219c193-ee64-4da9-abc8-80a5dd48cc0b" ScopeSelectorArgument="&lt;wnd app='applicationframehost.exe' appid='5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App' title='WhatsApp' /&gt;" SearchSteps="Selector, CV" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="494, 995, 40, 40" ElementType="Button" FuzzySelectorArgument="&lt;uia automationid='EmojiButton' cls='ToggleButton' name='Add emoji' role='button' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' matching:name='fuzzy' fuzzylevel:name='0.0' check:fulltext='' /&gt;" Guid="c8d33ade-1b4b-44a9-95d5-f24971c7484f" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="f4b94a66593f50b38cc7dc5f2fa1d7e8.png" xmlns="">0F7doW8Cb5kOxmZJ3QyeYzQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
