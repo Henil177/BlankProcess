@@ -23,8 +23,6 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>GlobalVariablesNamespace</x:String>
-      <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Xml.Serialization</x:String>
@@ -67,6 +65,11 @@
       <x:String>UiPath.OCR.Activities</x:String>
       <x:String>UiPath.OCR.Contracts.Activities</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -147,8 +150,9 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1283,4908" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1283,5444" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="variable1" />
       <Variable x:TypeArguments="x:Int32" Name="whatsapp_end" />
       <Variable x:TypeArguments="x:Int32" Name="whatsapp_start" />
       <Variable x:TypeArguments="x:Int32" Name="email_end" />
@@ -167,7 +171,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadCsvFile FilePath="{x:Null}" DataTable="[lead_list]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV" sap:VirtualizedContainerService.HintSize="620,170" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IgnoreQuotes="True" PathResource="[LocalResource.FromPath(&quot;C:\\Users\\admin\\Downloads\\leadlist.csv&quot;)]">
+    <ui:ReadCsvFile FilePath="{x:Null}" DataTable="[lead_list]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV" sap:VirtualizedContainerService.HintSize="620,170" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" IgnoreQuotes="True" PathResource="[LocalResource.FromPath(&quot;output\\leadlist_updated.csv&quot;)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -175,13 +179,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadCsvFile>
-    <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="620,57" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter the mode" OptionsString="[&quot;email&quot; &amp; &quot;;&quot; &amp; &quot;whatsapp&quot; &amp; &quot;;&quot; &amp; &quot;both&quot;]" Title="Select Mode" TopMost="False">
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="620,118" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[lead_list.AsEnumerable()]" />
+    <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="620,329" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter the mode" OptionsString="[&quot;email&quot; &amp; &quot;;&quot; &amp; &quot;whatsapp&quot; &amp; &quot;;&quot; &amp; &quot;both&quot;]" Title="Select Mode" TopMost="False">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[mode]</OutArgument>
       </ui:InputDialog.Result>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -286,7 +291,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[email_mode]" sap:VirtualizedContainerService.HintSize="620,1722" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[email_mode]" sap:VirtualizedContainerService.HintSize="620,1753" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -294,39 +299,42 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="618,1493" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="618,1524" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow" sap:VirtualizedContainerService.HintSize="584,1385" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lead_list.AsEnumerable()]">
+          <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow" sap:VirtualizedContainerService.HintSize="584,1416" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lead_list.AsEnumerable()]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="currentDataRow" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="582,1254" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="582,1285" sap2010:WorkflowViewState.IdRef="Sequence_20">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Not IsNothing(currentDataRow) AndAlso lead_list.Rows.IndexOf(currentDataRow) &gt;= email_start AndAlso lead_list.Rows.IndexOf(currentDataRow) &lt;= email_end]" sap:VirtualizedContainerService.HintSize="548,1194" sap2010:WorkflowViewState.IdRef="If_5">
+                  <If Condition="[Not IsNothing(currentDataRow) AndAlso lead_list.Rows.IndexOf(currentDataRow) &gt;= email_start AndAlso lead_list.Rows.IndexOf(currentDataRow) &lt;= email_end]" sap:VirtualizedContainerService.HintSize="548,1225" sap2010:WorkflowViewState.IdRef="If_5">
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="546,974" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="546,1005" sap2010:WorkflowViewState.IdRef="Sequence_23">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,914" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,945" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="email_subject" />
+                          </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,211" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,242" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                             <ui:MultipleAssign.AssignOperations>
                               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -350,7 +358,15 @@
                                     <OutArgument x:TypeArguments="x:String">[email_body]</OutArgument>
                                   </ui:AssignOperation.To>
                                   <ui:AssignOperation.Value>
-                                    <InArgument x:TypeArguments="x:String">["Hi " &amp; currunt_name &amp; ",\n\nI\u2019m reaching Out From Zylitix To introduce our latest software solution designed To help businesses Like yours save time, cut costs, And boost productivity.\n\nWith our platform, you can:\n- Automate repetitive tasks\n- Gain real-time insights With analytics\n- Improve team collaboration And efficiency\n\nWe\u2019d love To show you how it can fit your needs.\nWould you be open To a quick demo Call this week?\n\nSpecial Offer: For early adopters, we\u2019re providing a 14-day free trial To explore all features With no commitment.\n\nLooking forward To hearing From you,\nBest regards,\nYour Name\nSales Team | Zylitix"]</InArgument>
+                                    <InArgument x:TypeArguments="x:String">[currentDataRow("Email_Body").ToString()]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:String">[email_subject]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:String">[currentDataRow("Email_Subject").ToString()]</InArgument>
                                   </ui:AssignOperation.Value>
                                 </ui:AssignOperation>
                               </scg:List>
@@ -508,7 +524,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[whatsapp_mode]" sap:VirtualizedContainerService.HintSize="620,2642" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[whatsapp_mode]" sap:VirtualizedContainerService.HintSize="620,2757" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -516,39 +532,39 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="608,2422" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="608,2537" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="WhatsApp(2)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="574,2362" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="aaff3bb5-7ded-42ad-9d19-04a19f82ca8f" Version="V2">
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="WhatsApp(2)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="574,2477" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="aaff3bb5-7ded-42ad-9d19-04a19f82ca8f" Version="V2">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540,2070" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540,2185" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow" sap:VirtualizedContainerService.HintSize="506,1958" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[lead_list.AsEnumerable()]">
+                  <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow" sap:VirtualizedContainerService.HintSize="506,2073" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[lead_list.AsEnumerable()]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="currentDataRow" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,1827" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,1942" sap2010:WorkflowViewState.IdRef="Sequence_25">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <If Condition="[Not IsNothing(currentDataRow) AndAlso lead_list.Rows.IndexOf(currentDataRow) &gt;= whatsapp_start AndAlso lead_list.Rows.IndexOf(currentDataRow) &lt;= whatsapp_end]" sap:VirtualizedContainerService.HintSize="470,1767" sap2010:WorkflowViewState.IdRef="If_7">
+                          <If Condition="[Not IsNothing(currentDataRow) AndAlso lead_list.Rows.IndexOf(currentDataRow) &gt;= whatsapp_start AndAlso lead_list.Rows.IndexOf(currentDataRow) &lt;= whatsapp_end]" sap:VirtualizedContainerService.HintSize="470,1882" sap2010:WorkflowViewState.IdRef="If_7">
                             <If.Then>
-                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,1547" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,1662" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -560,6 +576,14 @@
                                   </Assign.To>
                                   <Assign.Value>
                                     <InArgument x:TypeArguments="x:String">[currentDataRow("PhoneNumber").ToString()]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[whatsapp_message]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[currentDataRow("whatsapp-message").ToString()]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                                 <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="aaff3bb5-7ded-42ad-9d19-04a19f82ca8f" Version="V5">
