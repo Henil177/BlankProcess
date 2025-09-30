@@ -3,6 +3,7 @@ import requests
 import time
 import os
 import csv
+import json
 from typing import Tuple
 import openpyxl
 import logging
@@ -188,18 +189,27 @@ if __name__ == "__main__":
     # Assign results to dataframe
     df[['whatsapp-message', 'Email_Subject', 'Email_Body']] = pd.DataFrame(results, index=df.index)
     
-    # Save updated CSV and Excel to output folder
+    # Save updated CSV, Excel, and JSON to output folder
     output_csv_path = os.path.join(OUTPUT_FOLDER, 'leadlist_updated.csv')
     output_xlsx_path = os.path.join(OUTPUT_FOLDER, 'leadlist_updated.xlsx')
+    output_json_path = os.path.join(OUTPUT_FOLDER, 'leadlist_updated.json')
+    
     try:
         # Save CSV with quoting all fields to handle commas
         df.to_csv(output_csv_path, index=False, quoting=csv.QUOTE_ALL, escapechar='\\')
+        logging.info(f"Saved CSV to: {output_csv_path}")
+        
         # Save Excel
         df.to_excel(output_xlsx_path, index=False, engine='openpyxl')
-        logging.info("CSV and Excel files updated successfully!")
-        logging.info(f"Saved CSV to: {output_csv_path}")
         logging.info(f"Saved Excel to: {output_xlsx_path}")
+        
+        # Save JSON
+        df.to_json(output_json_path, orient='records', indent=2, force_ascii=False)
+        logging.info(f"Saved JSON to: {output_json_path}")
+        
+        logging.info("All files updated successfully!")
         logging.info(f"Total leads processed: {len(df)}")
+        
     except Exception as e:
         logging.error(f"Error saving files: {e}")
         exit(1)
