@@ -162,7 +162,7 @@
       <AssemblyReference>UiPath.Python.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1283,6859" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1283,6899" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JArray" Name="lead_object" />
       <Variable x:TypeArguments="x:String" Name="lead_json" />
@@ -179,6 +179,14 @@
       <Variable x:TypeArguments="x:String" Name="current_Email" />
       <Variable x:TypeArguments="x:String" Name="current_Name" />
       <Variable x:TypeArguments="sd:DataTable" Name="lead_list" />
+      <Variable x:TypeArguments="x:Int32" Name="index">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">ForEach`1_4</x:String>
+            <x:String x:Key="SourcePropertyName">CurrentIndex</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -484,7 +492,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[whatsapp_mode]" sap:VirtualizedContainerService.HintSize="610,2757" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[whatsapp_mode]" sap:VirtualizedContainerService.HintSize="610,2797" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -492,39 +500,39 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="608,2537" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="608,2577" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="WhatsApp(2)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="574,2477" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="aaff3bb5-7ded-42ad-9d19-04a19f82ca8f" Version="V2">
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="WhatsApp(2)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="574,2517" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="aaff3bb5-7ded-42ad-9d19-04a19f82ca8f" Version="V2">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540,2185" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540,2225" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow" sap:VirtualizedContainerService.HintSize="506,2073" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[lead_list.AsEnumerable()]">
+                  <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="[index]" DisplayName="For Each currentJToken" sap:VirtualizedContainerService.HintSize="506,2113" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[lead_object]">
                     <ui:ForEach.Body>
-                      <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction x:TypeArguments="njl:JToken">
                         <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="currentDataRow" />
+                          <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentJToken" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,1942" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,1982" sap2010:WorkflowViewState.IdRef="Sequence_25">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <If Condition="[Not IsNothing(currentDataRow) AndAlso lead_list.Rows.IndexOf(currentDataRow) &gt;= whatsapp_start AndAlso lead_list.Rows.IndexOf(currentDataRow) &lt;= whatsapp_end]" sap:VirtualizedContainerService.HintSize="470,1882" sap2010:WorkflowViewState.IdRef="If_7">
+                          <If Condition="[Not IsNothing(currentJToken) AndAlso index &gt;= whatsapp_start AndAlso index &lt;= whatsapp_end]" sap:VirtualizedContainerService.HintSize="470,1922" sap2010:WorkflowViewState.IdRef="If_7">
                             <If.Then>
-                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,1662" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,1702" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -535,7 +543,7 @@
                                     <OutArgument x:TypeArguments="x:String">[current_phonenumber]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[currentDataRow("PhoneNumber").ToString()]</InArgument>
+                                    <InArgument x:TypeArguments="x:String">[currentJToken("PhoneNumber").ToString()]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                                 <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_4">
@@ -543,7 +551,7 @@
                                     <OutArgument x:TypeArguments="x:String">[whatsappMsg]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[currentDataRow("whatsapp-message").ToString()]</InArgument>
+                                    <InArgument x:TypeArguments="x:String">[currentJToken("whatsapp-message").ToString()]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                                 <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="aaff3bb5-7ded-42ad-9d19-04a19f82ca8f" Version="V5">
@@ -593,7 +601,7 @@
                                     </uix:TargetAnchorable>
                                   </uix:NClick.Target>
                                 </uix:NClick>
-                                <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" ScrollOffset="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="08ad9796-4123-4f4c-8135-5d5abd281845" DisplayName="CV Screen Scope 'edit Type'" sap:VirtualizedContainerService.HintSize="434,551" sap2010:WorkflowViewState.IdRef="CVScope_2" SendOnPremData="False" Version="V6">
+                                <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" ScrollOffset="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="08ad9796-4123-4f4c-8135-5d5abd281845" DisplayName="CV Screen Scope 'edit Type'" sap:VirtualizedContainerService.HintSize="434,591" sap2010:WorkflowViewState.IdRef="CVScope_2" SendOnPremData="False" Version="V6">
                                   <p:CVScope.Body>
                                     <ActivityAction x:TypeArguments="x:Object">
                                       <ActivityAction.Argument>
